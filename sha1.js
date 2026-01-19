@@ -6,7 +6,7 @@ const crypto = require('crypto');
  * @returns {string} SHA-1ハッシュ値（16進数文字列）
  */
 function sha1(input) {
-  // TODO: 実装
+  return crypto.createHash('sha1').update(input).digest('hex');
 }
 
 module.exports = { sha1 };

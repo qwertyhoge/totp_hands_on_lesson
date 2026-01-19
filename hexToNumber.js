@@ -4,7 +4,7 @@
  * @returns {number} 数値
  */
 function hexToNumber(hexString) {
-  // TODO: 実装
+  return parseInt(hexString, 16);
 }
 
 module.exports = { hexToNumber };
