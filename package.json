@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sha1": "node sha1.js",
-    "hexToDec": "node hexToDec.js",
+    "hexToNumber": "node hexToNumber.js",
     "hmac": "node hmac.js"
   },
   "keywords": [],
