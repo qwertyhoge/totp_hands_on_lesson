@@ -1,4 +1,6 @@
 const { sha1 } = require('./sha1');
+const crypto = require('crypto');
+const assert = require('assert');
 /**
  * HMAC-SHA1を生成する
  * WARNING: 実運用では自前で実装せずHMACライブラリを直接使用すべき
@@ -36,6 +38,10 @@ function hmacSha1(key, message) {
   // 外側のハッシュを作成
   const outerInput = Buffer.concat([oMaskedKey, innerHash]);
   const outerHashHex = sha1(outerInput);
+
+  const libHmac = crypto.createHmac('sha1', normalizedKey).update(message).digest('hex');
+  // ライブラリと自前で実装した結果が一致することを確認
+  assert.strictEqual(outerHashHex, libHmac);
 
   return outerHashHex;
 }
