@@ -2,13 +2,13 @@ const { sha1 } = require('./sha1');
 const crypto = require('crypto');
 const assert = require('assert');
 /**
- * HMAC-SHA1を生成する
+ * HMAC-SHA1を生成する（Buffer型メッセージ用）
  * WARNING: 実運用では自前で実装せずHMACライブラリを直接使用すべき
  * @param {string} key - 秘密鍵(16進数文字列)
- * @param {string} message - メッセージ(文字列)
+ * @param {Buffer} message - メッセージ(Buffer)
  * @returns {string} HMAC-SHA1値（16進数文字列）
  */
-function hmacSha1(key, message) {
+function hmacSha1Bytes(key, message) {
   const normalizeKey = (key) => {
     const keyBuffer = Buffer.from(key, 'hex');
     // キー長が64バイトを超える場合はエラー
@@ -32,7 +32,7 @@ function hmacSha1(key, message) {
   const oMaskedKey = Buffer.from(normalizedKey.map((byte, index) => byte ^ opad[index]));
 
   // 内側のハッシュを作成
-  const innerInput = Buffer.concat([iMaskedKey, Buffer.from(message)]);
+  const innerInput = Buffer.concat([iMaskedKey, message]);
   const innerHash = Buffer.from(sha1(innerInput), 'hex');
 
   // 外側のハッシュを作成
@@ -46,7 +46,18 @@ function hmacSha1(key, message) {
   return outerHashHex;
 }
 
-module.exports = { hmacSha1 };
+/**
+ * HMAC-SHA1を生成する（文字列型メッセージ用）
+ * WARNING: 実運用では自前で実装せずHMACライブラリを直接使用すべき
+ * @param {string} key - 秘密鍵(16進数文字列)
+ * @param {string} message - メッセージ(文字列)
+ * @returns {string} HMAC-SHA1値（16進数文字列）
+ */
+function hmacSha1(key, message) {
+  return hmacSha1Bytes(key, Buffer.from(message));
+}
+
+module.exports = { hmacSha1, hmacSha1Bytes };
 
 // CLI実行時の処理
 if (require.main === module) {

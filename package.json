@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sha1": "node sha1.js",
-    "hexToNumber": "node hexToNumber.js",
     "hmac": "node hmac.js",
-    "generateTOTPQR": "node generateTOTPQR.js"
+    "totp": "node totp.js",
+    "generateTOTPQR": "node generateTOTPQR.js",
+    "dateToUnixTime": "node dateToUnixTime.js"
   },
   "keywords": [],
   "author": "",
