@@ -18,12 +18,22 @@ pnpm run sha1 "入力文字列"
 
 ### hmac.js
 
-今回の中心的関数であるHMAC-SHA1。sha1.jsをもとに自前で実装している。
+今回の中心的関数であるHMAC-SHA1。sha1.jsをもとに自前で実装している。(本来は暗号理論絡みの自前実装は回避すべき)
 
 **使用方法:**
 
 ```bash
 pnpm run hmac "秘密鍵(16進数)" "メッセージ"
+```
+
+### dateToUnixTime.js
+
+入力した日付文字列(JST)に対し、unix時刻を返すスクリプト。TOTPのタイプステップ計算で利用。
+
+**使用方法:**
+
+```bash
+pnpm run dateToUnixTime "ハイフン区切り日付Tコロン区切り時刻"
 ```
 
 ### generateTOTPQR.js
