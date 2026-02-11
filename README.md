@@ -1,6 +1,7 @@
 # totp_hands_on_lesson
 
 TOTP(Time-based One Time Password)の講義のために作成したハンズオン資料。受講者が演習に必要なアセットを統一管理している。
+TOTPカードだけは別途管理。
 
 ## 含まれるスクリプト
 
@@ -51,3 +52,7 @@ pnpm run generateTOTPQR "秘密鍵(16進数)"
 ## 教材
 
 [Google Slide](https://docs.google.com/presentation/d/103wLq3QEV9uA4aWMsLSqcLe-p2LZll2_gly00ZT9jvM/edit?usp=sharing)
+
+## 授業後アンケート
+
+[Google Form](https://docs.google.com/forms/d/e/1FAIpQLSdvGgk6tmA4w0yAu8qAoKu7ALcCY7cuazKtpTn_yrZmb2maZA/viewform?usp=header)
